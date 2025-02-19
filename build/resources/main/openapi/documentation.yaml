@@ -1,0 +1,23 @@
+openapi: "3.0.3"
+info:
+  title: "Application API"
+  description: "Application API"
+  version: "1.0.0"
+servers:
+  - url: "http://0.0.0.0:3000"
+paths:
+  /:
+    get:
+      description: "Get connected account"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            text/plain:
+              schema:
+                type: "string"
+              examples:
+                Example#1:
+                  value: "{\"card_holder_id\":\"bff019f4-2251-434a-a631-7a6afba5b5f7\",\"cards\":[{\"card_holder_id\":\"bff019f4-2251-434a-a631-7a6afba5b5f7\",\"card_id\":\"106cf200-e601-4feb-b6eb-a3c76c7be5a4\",\"created_at\":\"2024-08-19T06:29:38.312639\",\"deleted\":false,\"id\":\"d614bb41-f1ef-45b2-a436-064bb0d01c6f\",\"status\":\"ACTIVE\",\"updated_at\":\"2024-08-19T06:30:01.478217\"},{\"card_holder_id\":\"bff019f4-2251-434a-a631-7a6afba5b5f7\",\"card_id\":\"18a6c40b-fea7-4b7d-b254-c89af352deab\",\"created_at\":\"2024-08-19T07:08:08.342277\",\"deleted\":false,\"id\":\"5b67fb91-b4e2-42a1-9c41-8f65544e6c42\",\"status\":\"ACTIVE\",\"updated_at\":\"2024-08-19T07:10:03.878980\"}],\"connect_account_id\":\"acct_SWLHGA9kPAW6sW_f69Wbkg\",\"connected_account_status\":\"ACTIVE\",\"created_at\":\"2024-08-19T05:54:55.815880\",\"deleted\":false,\"global_account_id\":\"d5ec450a-1999-4fb5-ac3c-54bc606039be\",\"global_account_request_id\":\"7fac5c93-bf62-4d2e-99bd-7af06f81e386\",\"global_account_status\":\"ACTIVE\",\"phone_number\":\"91-9650076366\",\"status\":false,\"updated_at\":\"2024-08-19T07:35:08.199114\"}"
+components:
+  schemas: {}

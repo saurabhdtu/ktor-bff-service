@@ -1,0 +1,22 @@
+ktor:
+    application:
+        modules:
+            - com.zinc.money.bff.ApplicationKt.module
+    deployment:
+        environment: dev
+        port: 3000
+
+
+    environment:
+      dev:
+        jwt_secret: "dev-secret-key"
+        airwallex_service_url: "https://api-sandbox.z.inc/api/"
+
+      prod:
+        jwt_secret: "dev-secret-key"
+        airwallex_service_url: "https://api-sandbox.z.inc/api/"
+
+jwt:
+  domain: "https://jwt-provider-domain/"
+  audience: "jwt-audience"
+  realm: "ktor app"

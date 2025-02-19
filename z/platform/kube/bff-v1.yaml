@@ -1,0 +1,57 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: bff-v1
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bff-v1
+  labels:
+    app: bff-v1
+    service: bff-v1
+spec:
+  ports:
+    - name: http
+      port: 3000
+      targetPort: 3000
+  selector:
+    app: bff-v1
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bff-v1
+  labels:
+    app: bff-v1
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bff-v1
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: bff-v1
+        version: v1
+    spec:
+      serviceAccountName: bff-v1
+      containers:
+        - name: bff
+          image: 978145291337.dkr.ecr.ap-south-1.amazonaws.com/zinc-bff-hub:latest
+          imagePullPolicy: Always
+          env:
+            - name: API_BASE_URL
+              value: "http://api-service:3000"
+          ports:
+            - containerPort: 3000
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+      imagePullSecrets:
+        - name: ecrregcred
+      volumes:
+        - name: tmp
+          emptyDir: {}
